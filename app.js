@@ -8,6 +8,19 @@ Ext.application({
 
     extend: 'MVVMSample.Application',
     
+	model: [
+	'Item'
+	],
+	
+	store: [
+	'Videos'
+	],
+	
+	views: [
+	'listVideos',
+	'PlayerPanel'
+	],
+	
     autoCreateViewport: 'MVVMSample.view.main.Main'
 	
     //-------------------------------------------------------------------------

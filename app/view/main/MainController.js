@@ -8,19 +8,22 @@
 Ext.define('MVVMSample.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
-    requires: [
-        'Ext.MessageBox'
-    ],
-
     alias: 'controller.main',
 
     onClickButton: function () {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+		var additionalParams ={
+			'callback': onConfirm,
+			'scope': profile
+		}
+         gapi.auth.signIn(additionalParams, onConfirm);
     },
 
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-            //
-        }
-    }
+    onConfirm: function (authResult) {
+		if(authResult['status']['signed_in']){
+			var signinButton = Ext.ComponentManager.get('signin_button');
+			signinButton.setVisible(false);
+			var signoutButton = Ext.ComponentManager.get('signout_button');
+			signoutButton.setVisible(true);
+    	}
+	}
 });

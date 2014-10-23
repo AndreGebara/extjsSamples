@@ -9,7 +9,7 @@ Ext.define('MVVMSample.Application', {
     name: 'MVVMSample',
 
     stores: [
-        // TODO: add global / shared stores here
+        'MVVMSample.store.Videos'
     ],
     
     launch: function () {
